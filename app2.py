@@ -33,6 +33,8 @@ lambda_ = aws_lambda.Function(
     code=aws_lambda.Code.from_asset("runtime"),
     runtime=aws_lambda.Runtime.PYTHON_3_9,
     handler="index.handler",
+    architecture=aws_lambda.Architecture.ARM_64,
+    memory_size=256,
 )
 
 cdk.Aspects.of(stack).add(HogeAspect())

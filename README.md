@@ -1,4 +1,4 @@
-テンプレート
+CDKでオレオレガードレールを実装する
 
 # 構成
 
@@ -13,8 +13,12 @@ npm install
 pip install -r requirements.txt
 ```
 
-# デプロイ
+# 動作確認
 
 ```
-npx cdk -a "python3 app.py" deploy
+# オレオレガードレールに怒られる
+npx cdk -a "python3 app.py" synth
+
+# オレオレガードレール対応した
+npx cdk -a "python3 app2.py" synth
 ```
