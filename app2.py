@@ -7,7 +7,7 @@ from constructs import IConstruct
 # --------------------------------------
 # ガードレール的なモノを定義する
 @jsii.implements(cdk.IAspect)
-class HogeAspect:
+class HogeGuardrail:
     def visit(self, node: IConstruct):
         if isinstance(node, aws_lambda.Function):
             cfn_node: aws_lambda.CfnFunction = node.node.default_child
@@ -33,10 +33,10 @@ lambda_ = aws_lambda.Function(
     code=aws_lambda.Code.from_asset("runtime"),
     runtime=aws_lambda.Runtime.PYTHON_3_9,
     handler="index.handler",
-    architecture=aws_lambda.Architecture.ARM_64,
-    memory_size=256,
+    architecture=aws_lambda.Architecture.ARM_64,  # 追加
+    memory_size=256,  # 追加
 )
 
-cdk.Aspects.of(stack).add(HogeAspect())
+cdk.Aspects.of(stack).add(HogeGuardrail())
 
 app.synth()
