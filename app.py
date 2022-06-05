@@ -13,10 +13,10 @@ class HogeGuardrail:
             cfn_node: aws_lambda.CfnFunction = node.node.default_child
             # アーキテクチャーの判断
             if not cfn_node.architectures == ["arm64"]:
-                cdk.Annotations.of(node).add_error("ARM64のが安いよ")
+                cdk.Annotations.of(node).add_error("ARM64じゃないよ！！")
             # メモリーの判断
             if not cfn_node.memory_size:
-                cdk.Annotations.of(node).add_error("メモリーチューニングしよう")
+                cdk.Annotations.of(node).add_error("メモリーサイズ設定してないよ！！デフォルトだと最小だからパフォーマンス悪いよ！！")
 
     def error(self, node, message):
         cdk.Annotations.of(node).add_error(message)
